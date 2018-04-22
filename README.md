@@ -2,7 +2,9 @@
 - `server.py` tool allows to launch web server. 
 
 ## Run flask web server
-- `python server.py` tool allows to launch web server. 
+```bash
+~ python server.py
+```
 
 ## Contributing
 
