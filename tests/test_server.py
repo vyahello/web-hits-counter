@@ -1,22 +1,32 @@
 import pytest
-import requests
+from requests import get, Response
+
 
 _url = 'http://127.0.0.1:9999'
+_success = 200
 
 
 @pytest.fixture(scope='module')
-def url_setup() -> str:
-    return requests.get(_url).text
+def url_setup() -> Response:
+    return get(_url)
 
 
 @pytest.fixture(scope='module')
-def log_setup() -> str:
-    return requests.get(_url + '/logs').text
+def log_setup() -> Response:
+    return get(_url + '/logs')
 
 
-def test_server_url(url_setup: str) -> None:
-    assert len(url_setup) > 0
+def test_server_url(url_setup: Response) -> None:
+    assert len(url_setup.text) > 0
 
 
-def test_server_logs(log_setup: str) -> None:
-    assert len(log_setup) > 0
+def test_url_status_code(url_setup: Response) -> None:
+    assert url_setup.status_code == _success
+
+
+def test_server_logs(log_setup: Response) -> None:
+    assert len(log_setup.text) > 0
+
+
+def test_logs_status_code(log_setup: Response) -> None:
+    assert log_setup.status_code == _success
