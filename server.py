@@ -1,14 +1,14 @@
 from flask import Flask
 from server.counters.counters import Counter, FlaskCounter
-from server.logs.logs import FlaskLogFile
+from server.files.files import LogFile
 
 _server = Flask(__name__)  # type: Flask
 _counter = FlaskCounter()  # type: Counter
-_log = 'logs/data.log'
+_log = 'logs/data.log'  # type: str
 
 
 def _clear_logs() -> None:
-    with FlaskLogFile(_log, mode='w') as lg:
+    with LogFile(_log, mode='w') as lg:
         lg.write('')
 
 
@@ -16,14 +16,14 @@ def _clear_logs() -> None:
 def hello() -> str:
     _counter.increment()
     response = 'Get request occurred {} time(s)\n'.format(_counter.total())
-    with FlaskLogFile(_log, mode='a') as lg:
+    with LogFile(_log, mode='a') as lg:
         lg.write(response)
     return response
 
 
 @_server.route('/logs')
 def logs() -> str:
-    with FlaskLogFile(_log) as lg:
+    with LogFile(_log) as lg:
         return lg.read()
 
 
