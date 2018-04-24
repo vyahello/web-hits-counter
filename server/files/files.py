@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from typing import Any, ContextManager
+from typing import Any, ContextManager, TextIO
 
 
 class File(ContextManager):
@@ -18,7 +18,7 @@ class TextFile(File):
     """Represent simple text file object."""
 
     def __init__(self, file: str, mode: str) -> None:
-        self._stream = open(file, mode)
+        self._stream: TextIO = open(file, mode)
 
     def write(self, data: str) -> None:
         self._stream.write(data)
@@ -37,7 +37,7 @@ class LogFile(File):
     """Represent log file object for flask application."""
 
     def __init__(self, file: str, mode: str = 'r') -> None:
-        self._file = TextFile(file, mode)  # type: File
+        self._file: File = TextFile(file, mode)
 
     def write(self, data: str) -> None:
         self._file.write(data)

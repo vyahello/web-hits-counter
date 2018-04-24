@@ -1,8 +1,8 @@
 import os
 from server.files.files import TextFile, LogFile
 
-_file = 'test.txt'
-_input = 'data'
+_file: str = 'test.txt'
+_input: str = 'data'
 
 
 def test_file():

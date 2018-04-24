@@ -9,7 +9,7 @@ class ContextManager(ABC):
             obj.do_some(...)
     """
 
-    __metaclass__ = ABCMeta
+    __metaclass__: type = ABCMeta
 
     @abstractmethod
     def __enter__(self) -> Any:

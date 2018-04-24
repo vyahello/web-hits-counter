@@ -19,7 +19,7 @@ class FlaskCounter(Counter):
     """Represent counter for flask application."""
 
     def __init__(self):
-        self._occurrence = 0
+        self._occurrence: int = 0
 
     def increment(self) -> None:
         self._occurrence += 1

@@ -2,8 +2,8 @@ import pytest
 from requests import get, Response
 
 
-_url = 'http://127.0.0.1:9999'
-_success = 200
+_url: str = 'http://127.0.0.1:9999'
+_success: int = 200
 
 
 @pytest.fixture(scope='module')

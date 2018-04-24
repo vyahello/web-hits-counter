@@ -1,7 +1,7 @@
 import pytest
 from server.counters.counters import Counter, FlaskCounter
 
-_counts = 5
+_counts: int = 5
 
 
 @pytest.fixture(scope='module')

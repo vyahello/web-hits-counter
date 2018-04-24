@@ -2,9 +2,9 @@ from flask import Flask
 from server.counters.counters import Counter, FlaskCounter
 from server.files.files import LogFile
 
-_server = Flask(__name__)  # type: Flask
-_counter = FlaskCounter()  # type: Counter
-_log = 'logs/data.log'  # type: str
+_server: Flask = Flask(__name__)
+_counter: Counter = FlaskCounter()
+_log: str = 'logs/data.log'
 
 
 def _clear_logs() -> None:
@@ -15,7 +15,7 @@ def _clear_logs() -> None:
 @_server.route('/')
 def hello() -> str:
     _counter.increment()
-    response = 'Get request occurred {} time(s)\n'.format(_counter.total())
+    response: str = 'Get request occurred {} time(s)\n'.format(_counter.total())
     with LogFile(_log, mode='a') as lg:
         lg.write(response)
     return response
