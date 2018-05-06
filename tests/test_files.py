@@ -1,5 +1,5 @@
 import os
-from server.files.files import TextFile, LogFile
+from server.files import TextFile, LogFile
 
 _file: str = 'test.txt'
 _input: str = 'data'

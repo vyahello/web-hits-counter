@@ -1,5 +1,5 @@
 import pytest
-from server.counters.counters import Counter, FlaskCounter
+from server.counters import Counter, FlaskCounter
 
 _counts: int = 5
 

@@ -1,6 +1,6 @@
 from server.applications import Server, WebServer
-from server.counters.counters import Counter, FlaskCounter
-from server.files.files import LogFile
+from server.counters import Counter, FlaskCounter
+from server.files import LogFile
 
 _server: Server = WebServer()
 _counter: Counter = FlaskCounter()
