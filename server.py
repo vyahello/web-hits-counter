@@ -1,8 +1,8 @@
-from flask import Flask
+from server.applications import Server, WebServer
 from server.counters.counters import Counter, FlaskCounter
 from server.files.files import LogFile
 
-_server: Flask = Flask(__name__)
+_server: Server = WebServer()
 _counter: Counter = FlaskCounter()
 _log: str = 'logs/data.log'
 
@@ -29,4 +29,4 @@ def logs() -> str:
 
 if __name__ == "__main__":
     _clear_logs()
-    _server.run(host="0.0.0.0", port=9999, debug=True)
+    _server.run()
