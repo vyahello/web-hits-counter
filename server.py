@@ -1,4 +1,4 @@
-from server.applications import Server, WebServer
+from server.servers import Server, WebServer
 from server.counters import Counter, FlaskCounter
 from server.files import LogFile
 

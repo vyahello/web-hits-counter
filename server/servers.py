@@ -11,7 +11,7 @@ class Server(ABC):
         pass
 
     @abstractmethod
-    def run(self, host: str, port: int, debug: Any = None, **options: Any) -> None:
+    def run(self, host: str = None, port: int = None, debug: Any = None, **options: Any) -> None:
         pass
 
 
@@ -22,7 +22,7 @@ class WebServer(Server):
         self._app: Flask = Flask(name)
 
     def route(self, rule: str, **options: Any) -> Callable[..., Any]:
-        return self._app.route(rule)
+        return self._app.route(rule, **options)
 
-    def run(self, host: str = 'localhost', port: int = 9999, debug: Any = True, **options: Any) -> None:
+    def run(self, host: str = None, port: int = None, debug: Any = None, **options: Any) -> None:
         return self._app.run(host, port, debug, **options)
