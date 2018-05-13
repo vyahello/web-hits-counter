@@ -19,4 +19,7 @@
 - run `pip install -r requirements.txt` to install all require python packages
 
 ### Run unittests
-Run `pytest -v` from shell in the root directory of the repository.
+Run `pytest -v tests/unitests` from shell in the root directory of the repository.
+
+### Run functional tests
+Run `pytest -v tests/functional` from shell in the root directory of the repository.
