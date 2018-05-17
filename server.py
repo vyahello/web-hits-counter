@@ -1,15 +1,10 @@
 from server.servers import Server, WebServer
 from server.counters import Counter, FlaskCounter
-from server.files import LogFile
+from server.files import LogFile, clear_logs
 
 _server: Server = WebServer()
 _counter: Counter = FlaskCounter()
 _log: str = 'logs/data.log'
-
-
-def _clear_logs() -> None:
-    with LogFile(_log, mode='w') as lg:
-        lg.write('')
 
 
 @_server.route('/')
@@ -28,5 +23,5 @@ def logs() -> str:
 
 
 if __name__ == "__main__":
-    _clear_logs()
+    clear_logs(_log)
     _server.run()

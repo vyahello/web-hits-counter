@@ -2,6 +2,11 @@ from abc import abstractmethod
 from typing import Any, ContextManager, TextIO
 
 
+def clear_logs(log: str) -> None:
+    with LogFile(log, mode='w') as lg:
+        lg.write('')
+
+
 class File(ContextManager):
     """Represent abstraction for log file object."""
 
