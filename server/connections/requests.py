@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from server.connections.api import CustomApiSession, ApiSession
+from server.connections.api import ApiSession, Session
 from server.connections.responses import Response, HttpResponseError
 
 
@@ -11,23 +11,23 @@ class Request(ABC):
         pass
 
 
-class GetRequest(Request):
+class Get(Request):
     """Represent a GET request."""
 
     def __init__(self, url: str) -> None:
-        self._session: ApiSession = CustomApiSession(url)
+        self._session: Session = ApiSession(url)
 
     def response(self) -> Response:
         return self._session.get()
 
 
-class SafeGetRequest(Request):
+class SafeGet(Request):
     """Represent a safe GET request.
     Raise an error if `200` response status code is not presented.
     """
 
     def __init__(self, url: str, status_code: int = 200) -> None:
-        self._req: Request = GetRequest(url)
+        self._req: Request = Get(url)
         self._code: int = status_code
 
     def response(self) -> Response:

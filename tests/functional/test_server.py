@@ -1,19 +1,19 @@
 import pytest
-from server.connections.requests import SafeGetRequest
+from server.connections.requests import SafeGet
 from server.connections.responses import Response, HttpResponseError
 
-_url: str = 'http://127.0.0.1:9999'
+_url: str = 'http://localhost:9999'
 _success: int = 200
 
 
 @pytest.fixture(scope='module')
 def url_response() -> Response:
-    return SafeGetRequest(_url).response()
+    return SafeGet(_url).response()
 
 
 @pytest.fixture(scope='module')
 def log_response() -> Response:
-    return SafeGetRequest(_url + '/logs').response()
+    return SafeGet(_url + '/logs').response()
 
 
 def test_server_url(url_response: Response) -> None:
@@ -34,4 +34,4 @@ def test_logs_status_code(log_response: Response) -> None:
 
 def test_server_url_not_exists() -> None:
     with pytest.raises(HttpResponseError):
-        SafeGetRequest(_url + '/not_exists').response()
+        SafeGet(_url + '/not_exists').response()

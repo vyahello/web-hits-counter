@@ -6,7 +6,7 @@ from server.connections.responses import Response, HttpResponse
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-class ApiSession(ABC):
+class Session(ABC):
     """The abstraction of an API session."""
 
     @abstractmethod
@@ -15,7 +15,7 @@ class ApiSession(ABC):
         pass
 
 
-class CustomApiSession(ApiSession):
+class ApiSession(Session):
     """Represent standard API session."""
 
     def __init__(self, url: str, session: requests.Session = requests.Session()) -> None:
