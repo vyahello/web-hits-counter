@@ -6,6 +6,9 @@
 ~ python server.py
 ```
 
+## Demo
+![Screenshot](server/demo/server.png)
+
 ## Contributing
 
 ### Setup
