@@ -1,7 +1,7 @@
-# Simple flask web server
-- `server.py` tool allows to launch web server. 
+# Flask template web server
+Simple web server written in [_flask_](http://flask.palletsprojects.com/en/1.1.x/) micro-web framework. It allows to count amount of web hits (GET requests) on a server.
 
-## Run flask web server
+## Run web server
 ```bash
 ~ python server.py
 ```
@@ -9,9 +9,20 @@
 ## Demo
 ![Screenshot](server/demo/server.png)
 
-## Contributing
+## Run tests
 
-### Setup
+Run **unit** tests from shell in the root directory of the repository:
+```bash
+~ pytest -v tests/unitests
+```
+
+Run **functional** tests from shell in the root directory of the repository:
+```bash
+~ pytest -v tests/functional
+```
+
+### Contributing
+
 - clone the repository
 - configure Git for the first time after cloning with your name and email
   ```bash
@@ -20,9 +31,3 @@
   ```
 - `python3.6` is required to run the code
 - run `pip install -r requirements.txt` to install all require python packages
-
-### Run unittests
-Run `pytest -v tests/unitests` from shell in the root directory of the repository.
-
-### Run functional tests
-Run `pytest -v tests/functional` from shell in the root directory of the repository.
