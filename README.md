@@ -1,7 +1,12 @@
 # Flask template web server
-Simple web server written in [_flask_](http://flask.palletsprojects.com/en/1.1.x/) micro-web framework. It allows to count amount of web hits (GET requests) on a server.
+> Simple web server written in **flask** micro-web framework.
+> It allows to count amount of web hits (GET requests) on a server.
 
-## Run web server
+## Tools
+- python3.6+
+- [flask](https://flask.palletsprojects.com)
+
+## Usage
 ```bash
 ~ python server.py
 ```
