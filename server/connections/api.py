@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABC
+from typing import Optional
 import requests
 import urllib3
 from server.connections.responses import Response, HttpResponse
@@ -18,8 +19,8 @@ class Session(ABC):
 class ApiSession(Session):
     """Represent standard API session."""
 
-    def __init__(self, url: str, session: requests.Session = requests.Session()) -> None:
-        self._session: requests.Session = session
+    def __init__(self, url: str, session: Optional[requests.Session] = None) -> None:
+        self._session: requests.Session = session or requests.Session()
         self._url: str = url
 
     def get(self) -> Response:
