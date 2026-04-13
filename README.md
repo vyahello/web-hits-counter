@@ -1,27 +1,70 @@
-# Flask template web server
-> Simple web server written in **flask** micro-web framework.
-> It allows to count amount of web hits (GET requests) on a server.
+# Web hits counter (Flask)
 
-## Tools
-- python3.9+
-- [flask](https://flask.palletsprojects.com)
+Small Flask web server that:
 
-## Usage
+- **Counts** how many times the root endpoint (`/`) was requested (GET).
+- **Appends** a line to `logs/data.log` for each hit.
+- **Exposes** an endpoint (`/logs`) to read the log back.
+
+## Requirements
+
+- **Python**: 3.9+
+- **Dependencies**: see `requirements.txt` (Flask + pytest + requests)
+
+## Install
+
+From the repo root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Run
+
+Start the server (binds to `localhost:9999`):
+
 ```bash
 python3 server.py
 ```
 
+## Endpoints
+
+- **`GET /`**
+  - Increments an in-memory counter
+  - Returns: `Get request occurred N time(s)\n`
+  - Appends the same line to `logs/data.log`
+
+- **`GET /logs`**
+  - Returns the full contents of `logs/data.log`
+
+Quick manual check:
+
+```bash
+curl -s http://localhost:9999/
+curl -s http://localhost:9999/logs
+```
+
+## Logging behavior
+
+- The log file path is **`logs/data.log`** (relative to the repo root).
+- The log is **cleared on server startup** (when routes are imported), so restarting the server resets the log contents.
+
 ## Demo
+
 ![Screenshot](server/demo/server.png)
 
-## Run tests
+## Tests
 
-Run **unit** tests from shell in the root directory of the repository:
+Run **unit** tests (no server required):
+
 ```bash
 pytest -v tests/unittests
 ```
 
-Run **functional** tests from shell in the root directory of the repository:
+Run **functional** tests (server must be running on `localhost:9999` in another terminal):
+
 ```bash
 pytest -v tests/functional
 ```
