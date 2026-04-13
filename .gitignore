@@ -10,3 +10,6 @@ venv
 # Distribution
 .DS_Store
 .cache/
+.vscode/
+.python-version
+
